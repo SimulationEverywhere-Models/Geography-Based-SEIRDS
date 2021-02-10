@@ -18,6 +18,7 @@ Requirements
 * A copy of this repository
 * A copy of Cadmium (master), available at https://github.com/SimulationEverywhere/cadmium
 * Python 3, Python packages geopandas, numpy, matplotlib
+* Java Runtime Environment
 
 The following commands can be used to get cadmium:
 
@@ -64,9 +65,9 @@ runall_default.sh does:
 1. Generates a cell space from Ottawa Disemmination area data, initializes infection in a single centrally located cell
 2. Runs a simulation
 3. Generates SEIRD graphs of the simulation (saved in logs folder)
-4. Converts the message log of the simulation into standard web viewer format (messages.log), generates structure.json, and saves the result in "GIS_Viewer_1-3/ottawa" folder
+4. Converts the message log of the simulation into standard web viewer format (messages.log), generates structure.json, and saves the result in "GIS_Viewer/ottawa" folder
 
-The makefile in "Scripts/Input_Generator" must be modified as described in the following section. The environment running the script must include python geopandas. After running runall_default.sh, the 4 files needed by the GIS DEVS Web viewer are generated, and the SEIRD graphs are located in the logs folder. See GIS_Viewer_1-3 folder README for more details on visualization. 
+The makefile in "Scripts/Input_Generator" must be modified as described in the following section. The environment running the script must include python geopandas. After running runall_default.sh, the 4 files needed by the GIS DEVS Web viewer are generated, and the SEIRD graphs are located in the logs folder. See GIS_Viewer folder README for more details on visualization. 
 
 Generating a scenario from geographical data
 ----
@@ -94,4 +95,4 @@ Viewing Results in GIS Web Viewer V2
 ---
 The most recent version of the GIS Web Viewer can be found at http://206.12.94.204:8080/arslab-web/1.3/app-gis-v2/index.html
 
-Upload a simulation's geojson, messages.log, structure.json, visualization.json to view simulation results. See GIS_Viewer_1-3 folder README for more details
+Upload a simulation's geojson, messages.log, structure.json, visualization.json to view simulation results. See GIS_Viewer folder README for more details
