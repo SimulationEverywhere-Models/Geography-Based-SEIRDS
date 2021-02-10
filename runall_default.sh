@@ -1,7 +1,7 @@
 # This script assumes the model is compiled and the environment running this script includes python and python geopandas
 
 # defining commands and directories used
-SIMULATE="./pandemic-geographical_model ../config/scenario.json 15"
+SIMULATE="./pandemic-geographical_model ../config/scenario.json 50"
 PARSE_MSG_LOGS="java -jar sim.converter.glenn.jar "input" "output""
 VISUALIZATION_DIR="GIS_Viewer/ottawa/simulation_runs/run1"
 
