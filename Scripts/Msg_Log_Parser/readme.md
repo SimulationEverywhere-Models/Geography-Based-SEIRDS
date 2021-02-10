@@ -1,3 +1,7 @@
+Parser is written by Bruno St-Aubin (sim.converter.glenn.jar)
+
+Instructions:
+
 1. Create a folder to hold the sim.converter.jar
 
 2. Inside the folder create 2 sub folders: input, output
@@ -7,7 +11,7 @@
 
 4. In the command line navigate to the folder holding the sim.converter
 
-5. Run the following command: java -jar sim.converter.jar ".\\input\\" ".\\output\\"
+5. Run the following command: java -jar sim.converter.glenn.jar ".\\input\\" ".\\output\\"
 
 6. Your results should now be in a .zip file in the output folder.
 
