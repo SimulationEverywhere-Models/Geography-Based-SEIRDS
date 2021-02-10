@@ -1,4 +1,4 @@
-Cell-DEVS-GeographyBased Model
+Cell-DEVS Geographical SEIRDS Pandemic Model
 ===
 Overview
 ----
