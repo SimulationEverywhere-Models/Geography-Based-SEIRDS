@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
-
-
 # Original author: Kevin
 # (Slightly) modified by: Binyamin
 # modified further by: Glenn
@@ -25,10 +22,6 @@ def shared_boundaries(gdf, id1, id2):
 def get_boundary_length(gdf, id1):
     g1 = gdf[gdf["dauid"] == str(id1)].geometry.iloc[0]
     return g1.boundary.length
-
-
-# In[6]:
-
 
 df = pd.read_csv("../../cadmium_gis/data/DA Ottawa Clean.csv")  # General information (id, population, area...)
 df_adj = pd.read_csv("../../cadmium_gis/data/DA Ottawa Adjacency.csv")  # Pair of adjacent territories
