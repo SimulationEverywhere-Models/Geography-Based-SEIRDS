@@ -3,7 +3,12 @@
 # defining commands and directories used
 SIMULATE="./pandemic-geographical_model ../config/scenario.json 15"
 PARSE_MSG_LOGS="java -jar sim.converter.glenn.jar "input" "output""
-VISUALIZATION_DIR="GIS_Viewer_1-3/ottawa/simulation_runs/run1"
+VISUALIZATION_DIR="GIS_Viewer/ottawa/simulation_runs/run1"
+
+# make directories if they don't exist
+mkdir -p Scripts/Msg_Log_Parser/input
+mkdir -p Scripts/Msg_Log_Parser/output
+mkdir -p GIS_Viewer/ottawa/simulation_runs/run1
 
 # generate a scenario json file for model input, save it in the config folder
 cd Scripts/Input_Generator
@@ -28,6 +33,7 @@ cd ../..
 # Note this deletes the contents of input/output folders of the message log parser before executing
 echo
 echo "Copying simulation results to message log parser:"
+
 rm -f Scripts/Msg_Log_Parser/input/*
 rm -rf "Scripts/Msg_Log_Parser/output\pandemic_messages"
 rm -f Scripts/Msg_Log_Parser/*.zip
