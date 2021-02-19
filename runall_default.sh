@@ -1,18 +1,21 @@
 # This script assumes the model is compiled and the environment running this script includes python and python geopandas
 
-# defining commands and directories used
+# defining commands used
 SIMULATE="./pandemic-geographical_model ../config/scenario.json 50"
 PARSE_MSG_LOGS="java -jar sim.converter.glenn.jar "input" "output""
-VISUALIZATION_DIR="GIS_Viewer/ottawa/simulation_runs/run1"
+
+# defining directories used
+VISUALIZATION_DIR="GIS_Viewer/ottawa/simulation_runs/run2"
 
 # make directories if they don't exist
+mkdir -p Scripts/Input_Generator/output
 mkdir -p Scripts/Msg_Log_Parser/input
 mkdir -p Scripts/Msg_Log_Parser/output
-mkdir -p GIS_Viewer/ottawa/simulation_runs/run1
+mkdir -p ${VISUALIZATION_DIR}
 
 # generate a scenario json file for model input, save it in the config folder
 cd Scripts/Input_Generator
-./generateScenario.sh
+python generate_cadmium_json_g1.py
 cp output/scenario.json ../../config
 
 # run the model
