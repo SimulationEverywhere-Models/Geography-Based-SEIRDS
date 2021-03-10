@@ -214,8 +214,8 @@ public:
         // calculate the correction factor of the current cell
         // The current cell must be part of its own neighborhood for this to work!
         vicinity self_vicinity = state.neighbors_vicinity.at(cell_id);
-        double current_cell_correction_factor = cstate.disobedient
-        + (1 - cstate.disobedient) * movement_correction_factor(self_vicinity.correction_factors, 
+        double current_cell_correction_factor = cstate.disobedient.at(age_segment_index)
+        + (1 - cstate.disobedient.at(age_segment_index)) * movement_correction_factor(self_vicinity.correction_factors,
                                                     state.neighbors_state.at(cell_id).get_total_infections(),
                                                     current_seird.hysteresis_factors.at(cell_id));
 
@@ -225,9 +225,11 @@ public:
             vicinity v = state.neighbors_vicinity.at(neighbor);
 
             // disobedient people have a correction factor of 1. The rest of the population is affected by the movement_correction_factor
-            double neighbor_correction = nstate.disobedient + (1 - nstate.disobedient) * movement_correction_factor(v.correction_factors,
-                                                                                                      nstate.get_total_infections(),
-                                                                                                      current_seird.hysteresis_factors.at(neighbor));
+            double neighbor_correction = nstate.disobedient.at(age_segment_index) +
+                    (1 - nstate.disobedient.at(age_segment_index)) *
+                    movement_correction_factor(v.correction_factors,
+                                               nstate.get_total_infections(),
+                                               current_seird.hysteresis_factors.at(neighbor));
 
             // Logically makes sense to require neighboring cells to follow the movement restriction that is currently
             // in place in the current cell if the current cell has a more restrictive movement.
