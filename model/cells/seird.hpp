@@ -19,7 +19,7 @@ struct seird {
     std::unordered_map<std::string, hysteresis_factor> hysteresis_factors;
     double population;
 
-    double disobedient;
+    std::vector<double> disobedient;
     double hospital_capacity;
     double fatality_modifier;
 
