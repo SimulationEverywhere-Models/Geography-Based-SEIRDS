@@ -14,7 +14,7 @@ struct vicinity
 {
     using infection_threshold = float;
     using mobility_correction_factor = std::array<float, 2>; // The first value is the mobility correction factor;
-    // The second one is the hysteresis factor.
+                                                             // The second one is the hysteresis factor.
 
     std::map<infection_threshold, mobility_correction_factor> correction_factors;
 

@@ -1,3 +1,4 @@
+## GIS DEVS Web Viewer
 This folder contains the files necesscary to view simulation results in the GIS DEVS Web Viewer v2 (1.3)
 The web viewer is located at : http://206.12.94.204:8080/arslab-web/1.3/app-gis-v2/index.html
 
@@ -12,7 +13,7 @@ https://github.com/romancardenas/Group_E_Simulation_Lifecycle/wiki/3.-User-Docum
 - note the entry in the visualization file["layers"]["file"] should match the name of the geojson uploaded
 
 This directory contains:
-visualization.json - created for SIRDS model, only compadible with this model
-ottawa - A directory to hold results of simulations using Ottawa Disemmination areas:
-    contains ottawaDA.geojson and the results of simulations that have been processed by the message log parser which are ready to be uploaded to the viewer (messages.log, structure.json)
-settings - contains visualization settings, these are for the user to see and modify the visualization color scheme, however to change the visualization, the changes must be made manually to visualization.json
+- example : a lightweight simulation to test viewing
+- ontario : holds the visualization.json, geojson, and simulation results for Ontario PHU simulations
+- ottawa : holds the visualization.json, geojson, and simulation results for Ontario DA simulations
+- settings - contains the visualization colors used. These files are to assist in modifying the visualization color scheme. These changes must be made manually to visualization.json

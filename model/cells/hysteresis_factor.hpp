@@ -5,10 +5,6 @@
 #ifndef PANDEMIC_HOYA_2002_HYSTERESIS_FACTOR_HPP
 #define PANDEMIC_HOYA_2002_HYSTERESIS_FACTOR_HPP
 
-/**
- * Stores the state of the movement restriction that a cell imposes on a neighbouring cell due to that neighbouring
- * having a certain amount of their population being infected.
- */
 struct hysteresis_factor
 {
     bool in_effect = false;
