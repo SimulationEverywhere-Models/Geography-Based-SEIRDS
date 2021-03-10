@@ -10,8 +10,8 @@
 struct simulation_config
 {
     int prec_divider;
-    using phase_rates = std::vector<            // The age sub_division
-                        std::vector<double>>;   // The stage of infection
+    using phase_rates = std::vector<        
+                        std::vector<double>>;
 
     phase_rates virulence_rates;
     phase_rates incubation_rates;

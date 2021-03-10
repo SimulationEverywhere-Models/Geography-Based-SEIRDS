@@ -72,13 +72,13 @@ public:
                "\n\nThere must be an equal number of age segments between all configuration rates.\n\n");
     }
 
+    // Whenever referring to a "population", it is meant the current age group's population.
+    // The state of each age group's population is calculated individually.
     seird local_computation() const override {
 
         seird res = state.current_state;
 
-        // Whenever referring to a "population", it is meant the current age group's population.
-        // These calculations are independent of the other age groups, meaning that the proportion that the current
-        // age group contributes to the population does not need to be taken into account.
+        // calculate the next new SEIRD variables for each age group
         for(int age_segment_index = 0; age_segment_index < res.get_num_age_segments(); ++age_segment_index) {
 
             // Note: Remember that these recoveries and fatalities are from the previous simulation cycle. Thus there is an ordering
@@ -118,7 +118,7 @@ public:
             // Advance all exposed forward a day, with some proportion leaving exposed(q-1) and entering infected(1)
             for (int i = res.get_num_exposed_phases() - 1; i > 0; --i)
             {
-                // *** Calculate proportion of exposed on a given day of the exposed phases ***
+                // calculate new exposed based on the incubation rate and the previous days exposed
                 double curr_expos = std::round(res.exposed.at(age_segment_index).at(i - 1)
                     *(1-incubation_rates.at(age_segment_index).at(i-1))*prec_divider) / prec_divider;
 
@@ -155,8 +155,7 @@ public:
                 res.infected.at(age_segment_index).at(i) = curr_inf;
             }
 
-            // The people on the first day of exposed are equal to the number of exposed from the susceptible population
-            
+            // The people on the first day of infection
             res.infected.at(age_segment_index).at(0) = new_i;
 
             // The susceptible population does not include those that just became exposed
@@ -194,18 +193,15 @@ public:
             // The susceptible population does not include the recovered population
             new_s -= std::accumulate(recovered.begin(), recovered.end(), 0.0f);
 
-
-            // catch any errors in formulas while devloping
-            assert(new_s >= -0.1 && "Something wrong with formulas, e + i + r + f > 1");
-
-            if (new_s > -0.001 && new_s < 0) new_s = 0;  // double precision issues
-
+            if (new_s > -0.001 && new_s < 0) new_s = 0; // double precision issues
             assert(new_s >= 0);
+
             res.susceptible.at(age_segment_index) = new_s;
         }
 
         return res;
     }
+
     // It returns the delay to communicate cell's new state.
     T output_delay(seird const &cell_state) const override {
         return 1;
@@ -225,10 +221,10 @@ public:
 
         // external exposed
         for(auto neighbor: neighbors) {
-            seird nstate = state.neighbors_state.at(neighbor);  // WHY NOT CONST?
+            seird const nstate = state.neighbors_state.at(neighbor);
             vicinity v = state.neighbors_vicinity.at(neighbor);
 
-            // disobedient people have a correction factor of 1. The rest of the population -> whatever in the configuration
+            // disobedient people have a correction factor of 1. The rest of the population is affected by the movement_correction_factor
             double neighbor_correction = nstate.disobedient + (1 - nstate.disobedient) * movement_correction_factor(v.correction_factors,
                                                                                                       nstate.get_total_infections(),
                                                                                                       current_seird.hysteresis_factors.at(neighbor));

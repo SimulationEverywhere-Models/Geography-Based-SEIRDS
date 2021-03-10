@@ -34,28 +34,24 @@ struct seird {
             hospital_capacity{hcap}, fatality_modifier{fatm} {}
 
     unsigned int get_num_age_segments() const {
-        return susceptible.size(); // Could use infections.size() or recovered.size(); simply a matter of preference.
+        return susceptible.size();
     }
 
     unsigned int get_num_exposed_phases() const {
-        return exposed.front().size(); // There will always be at least one age group, meaning the .front() call is always valid.
+        return exposed.front().size();
     }
 
     unsigned int get_num_infected_phases() const {
-        return infected.front().size(); // There will always be at least one age group, meaning the .front() call is always valid.
+        return infected.front().size();
     }
 
     unsigned int get_num_recovered_phases() const {
-        return recovered.front().size(); // There will always be at least one age group, meaning the .front() call is always valid.
+        return recovered.front().size();
     }
 
     static double sum_state_vector(const std::vector<double> &state_vector) {
         return std::accumulate(state_vector.begin(), state_vector.end(), 0.0f);
     }
-
-    // For the get_total_XXX functions, remember that the sum of the values in each vector associated with an age group
-    // is one. When looking at the population as a whole, the sum of any state vector has to be adjusted according to how
-    // big of a proportion the age group contributes to a population.
 
     double get_total_fatalities() const {
         double total_fatalities = 0.0f;
@@ -104,66 +100,23 @@ struct seird {
 
 bool operator<(const seird &lhs, const seird &rhs) { return true; }
 
+
+// outputs <population, S, E, I, R, new I, new E, new R, D>
 std::ostream &operator<<(std::ostream &os, const seird &seird) {
 
-    // The script included in the Script folder in this project assumes the less detailed output is printed
-    // So the following bool should be false. The more detailed output, when the following bool is true, is for
-    // the times more information about the various phases is required.
-    bool print_specific_state_information = false;
+    double new_exposed = 0.0f;
+    double new_infections = 0.0f;
+    double new_recoveries = 0.0f;
 
-    if(print_specific_state_information) {
-    	// EXPOSED STATE NOT ADDED FOR THIS VERBOSE PRINT
-        std::string susceptible_information;
-        std::string infected_information;
-        std::string recovered_information;
-
-        for(auto susceptible_age_segment : seird.susceptible) {
-            susceptible_information += "," + std::to_string(susceptible_age_segment);
-        }
-
-        for(int i = 0; i < seird.get_num_infected_phases(); ++i) {
-            double current_stage_infection = 0.0f;
-
-            for(int j = 0; j < seird.age_group_proportions.size(); ++j) {
-                current_stage_infection += seird.infected.at(j).at(i) * seird.age_group_proportions.at(j);
-            }
-
-            infected_information += "," + std::to_string(current_stage_infection);
-        }
-
-        for(int i = 0; i < seird.get_num_recovered_phases(); ++i) {
-            double current_stage_recovered = 0.0f;
-
-            for(int j = 0; j < seird.age_group_proportions.size(); ++j) {
-                current_stage_recovered += seird.recovered.at(j).at(i) * seird.age_group_proportions.at(j);
-            }
-
-            recovered_information += "," + std::to_string(current_stage_recovered);
-        }
-
-
-        os << seird.population - seird.population * seird.get_total_fatalities() <<"<" << seird.get_num_age_segments() << ",0" << ","
-        << seird.get_num_infected_phases() << "," << seird.get_num_recovered_phases() << ","
-            << seird.get_total_susceptible() << infected_information << recovered_information << ">";
-    }
-    else {
-
-		// outputs <population, number of susceptible, number of exposed, number of infected, number of recovered, number of new infected, number of new exposed, number of new recovered, number fatalities>
-        double new_exposed = 0.0f;
-        double new_infections = 0.0f;
-        double new_recoveries = 0.0f;
-
-        for(int i = 0; i < seird.age_group_proportions.size(); ++i) {
-        	new_exposed += seird.exposed.at(i).at(0) * seird.age_group_proportions.at(i);
-            new_infections += seird.infected.at(i).at(0) * seird.age_group_proportions.at(i);
-            new_recoveries += seird.recovered.at(i).at(0) * seird.age_group_proportions.at(i);
-        }
-
-        os << "<" << seird.population - seird.population * seird.get_total_fatalities() << "," << seird.get_total_susceptible()
-            << "," << seird.get_total_exposed() << "," << seird.get_total_infections() << "," << seird.get_total_recovered() << "," 
-            << new_exposed << "," << new_infections << "," << new_recoveries << "," << seird.get_total_fatalities() << ">";
+    for(int i = 0; i < seird.age_group_proportions.size(); ++i) {
+        new_exposed += seird.exposed.at(i).at(0) * seird.age_group_proportions.at(i);
+        new_infections += seird.infected.at(i).at(0) * seird.age_group_proportions.at(i);
+        new_recoveries += seird.recovered.at(i).at(0) * seird.age_group_proportions.at(i);
     }
 
+    os << "<" << seird.population - seird.population * seird.get_total_fatalities() << "," << seird.get_total_susceptible()
+        << "," << seird.get_total_exposed() << "," << seird.get_total_infections() << "," << seird.get_total_recovered() << "," 
+        << new_exposed << "," << new_infections << "," << new_recoveries << "," << seird.get_total_fatalities() << ">";
     return os;
 }
 
