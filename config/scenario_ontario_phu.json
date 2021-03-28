@@ -352,12 +352,12 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
             "config": {
-                "precision": 100000000,
+                "precision": 100000,
                 "virulence_rates": [
                     [
                         0.08,
@@ -1117,7 +1117,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -1639,7 +1639,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -2227,7 +2227,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -2782,7 +2782,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -3370,7 +3370,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -3958,7 +3958,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -4447,7 +4447,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -5002,7 +5002,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -5491,7 +5491,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -6112,7 +6112,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -6634,7 +6634,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -7156,7 +7156,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -7678,7 +7678,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -8233,7 +8233,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -8689,7 +8689,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -9211,7 +9211,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -9700,7 +9700,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -10123,7 +10123,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -10612,7 +10612,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -11101,7 +11101,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -11557,7 +11557,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -12079,7 +12079,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -12568,7 +12568,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -13090,7 +13090,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -13513,7 +13513,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -14035,7 +14035,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -14524,7 +14524,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -15145,7 +15145,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -15634,7 +15634,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -16123,7 +16123,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -16645,7 +16645,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -17299,7 +17299,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -17854,7 +17854,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },
@@ -18376,7 +18376,7 @@
                     0,
                     0
                 ],
-                "disobedient": 0.0,
+                "disobedient": 0.1,
                 "hospital_capacity": 0.2,
                 "fatality_modifier": 1.5
             },

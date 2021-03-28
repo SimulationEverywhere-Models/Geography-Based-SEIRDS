@@ -114,7 +114,7 @@ std::ostream &operator<<(std::ostream &os, const seird &seird) {
         new_recoveries += seird.recovered.at(i).at(0) * seird.age_group_proportions.at(i);
     }
 
-    os << "<" << seird.population - seird.population * seird.get_total_fatalities() << "," << seird.get_total_susceptible()
+    os << "<" << seird.population << "," << seird.get_total_susceptible()
         << "," << seird.get_total_exposed() << "," << seird.get_total_infections() << "," << seird.get_total_recovered() << "," 
         << new_exposed << "," << new_infections << "," << new_recoveries << "," << seird.get_total_fatalities() << ">";
     return os;

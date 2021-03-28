@@ -115,7 +115,7 @@ for ind, row in df_adj.iterrows():  # Iterate the different pair of adjacent ter
     expr = {"correlation": correlation,"infection_correction_factors": default_correction_factors}
     adj_full[str(row["region_id"])][str(row["region_id"])]["neighborhood"][str(row["neighbor_id"])]=expr
     
-    if ind % 1000 == 0:
+    if ind % 10 == 0:
         print(ind, "%.2f%%" % (100*ind/len(df_adj)))
 
 for key, value in adj_full.items():

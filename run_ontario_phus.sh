@@ -1,7 +1,8 @@
+# Written by Glenn
 # This script assumes the model is compiled and the environment running this script includes python and python geopandas
 
 # defining commands used
-SIMULATE="./pandemic-geographical_model ../config/scenario_ontario_phu.json"
+SIMULATE="./pandemic-geographical_model ../config/scenario_ontario_phu.json 500"
 PARSE_MSG_LOGS="java -jar sim.converter.glenn.jar "input" "output""
 
 # defining directories used
@@ -14,6 +15,7 @@ mkdir -p Scripts/Msg_Log_Parser/output
 mkdir -p ${VISUALIZATION_DIR}
 
 # generate a scenario json file for model input, save it in the config folder
+echo "Generating Scenario:"
 cd Scripts/Input_Generator
 python generate_ontario_phu_json.py
 cp output/scenario_ontario_phu.json ../../config
@@ -27,9 +29,10 @@ ${SIMULATE}
 
 # generate SIRDS graphs
 echo
-echo "Generating graphs (will be found in logs folder):"
+echo "Generating graphs and stats (will be found in logs folder):"
 cd ../Scripts/Graph_Generator/
-python graph_generator.py
+python graph_per_regions.py
+python graph_aggregates.py
 cd ../..
 
 # Copy the message log + scenario to message log parser's input
