@@ -1,3 +1,4 @@
+# Written by Glenn
 # This script assumes the model is compiled and the environment running this script includes python and python geopandas
 
 # defining commands used
@@ -14,6 +15,7 @@ mkdir -p Scripts/Msg_Log_Parser/output
 mkdir -p ${VISUALIZATION_DIR}
 
 # generate a scenario json file for model input, save it in the config folder
+echo "Generating Scenario:"
 cd Scripts/Input_Generator
 python generate_ottawa_da_json.py
 cp output/scenario_ottawa_da.json ../../config
@@ -29,7 +31,8 @@ ${SIMULATE}
 echo
 echo "Generating graphs (will be found in logs folder):"
 cd ../Scripts/Graph_Generator/
-python graph_generator.py
+python graph_per_regions.py
+python graph_aggregates.py
 cd ../..
 
 # Copy the message log + scenario to message log parser's input
