@@ -1,4 +1,19 @@
+# case data comparison
+case_data_comparison/ontario_phus/output
+case_data_comparison/ontario_phus/cases_plotted
+case_data_comparison/ontario_phus/sim_timeseries
+
+# case data parser
+case_data_parser/output
+
+# graph generator
+Graph_Generator/states.csv
+
+# input generator
 Input_Generator/output
+
+# message log parser
 Msg_Log_Parser/input
 Msg_Log_Parser/output
 Msg_Log_Parser/*.zip
+

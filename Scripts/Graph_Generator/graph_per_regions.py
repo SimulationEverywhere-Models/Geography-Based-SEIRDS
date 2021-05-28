@@ -79,7 +79,6 @@ def state_to_cumulative_df(sim_time, region_state, line_num):
     total_new_R = round(cell_population*percent_new_R)
     
     psum = percent_S + percent_E + percent_I + percent_R + percent_D
-    ptotal = total_S + total_E + total_I + total_R + total_D
     assert 0.95 <= psum < 1.05, ("at time" + str(curr_time))
     
     # return the info in desired format
@@ -273,6 +272,19 @@ for region_key in data_percents:
     plt.xlabel("Time (days)")
     plt.ylabel("Population (%)")
     plt.savefig(base_name + "percentages_SEIR.png")
+    plt.close(fig)
+    
+    # draw infected lines
+    fig, ax = plt.subplots(figsize=(15,6))
+    linewidth = 2
+
+    x = list(df_vis_p.index)
+    ax.plot(x, 100*df_vis_p["infected"], label="Infected", color=COLOR_INFECTED, linewidth=linewidth)
+    plt.legend(loc='upper right')
+    plt.title('Infected Percentages ' + foldername)
+    plt.xlabel("Time (days)")
+    plt.ylabel("Population (%)")
+    plt.savefig(base_name + "percentages_I.png")
     plt.close(fig)
     
     # draw SEIRD lines
