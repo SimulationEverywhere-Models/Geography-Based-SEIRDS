@@ -2,7 +2,7 @@
 *.slo
 *.lo
 *.o
-# *.obj
+*.obj
 
 # Precompiled Headers
 *.gch
@@ -35,17 +35,17 @@ cadmium.creator.user
 cadmium.files
 cadmium.includes
 
-#idea
+# idea
 .idea
 
-#Xcode project files
+# Xcode project files
 Cadmium.xcodeproj
 
-#VScode project files
+# VScode project files
 *.code-workspace
 *.vscode
 
-#Cmake
+# Cmake
 cmake-build-debug
 CMakeCache.txt
 CMakeFiles
