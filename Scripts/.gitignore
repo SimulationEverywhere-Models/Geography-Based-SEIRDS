@@ -1,4 +1,26 @@
+# Compare_Sim_Cases
+Compare_Sim_Cases/output
+Compare_Sim_Cases/sim_timeseries
+Compare_Sim_Cases/local_module/__pycache__
+Compare_Sim_Cases/*.bak
+Compare_Sim_Cases/.spyproject
+
+# Input_Generator
 Input_Generator/output
+
+# Msg_Log_Parser
 Msg_Log_Parser/input
 Msg_Log_Parser/output
 Msg_Log_Parser/*.zip
+
+# Transform_Case_Data
+Transform_Case_Data/cases_plotted
+Transform_Case_Data/cases_plotted_per_region
+Transform_Case_Data/output
+Transform_Case_Data/raw_cases
+Transform_Case_Data/local_module/__pycache__
+Transform_Case_Data/*.bak
+Transform_Case_Data/.spyproject
+
+# Spyder
+.spyproject

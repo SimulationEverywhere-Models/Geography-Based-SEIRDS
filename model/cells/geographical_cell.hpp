@@ -199,6 +199,7 @@ public:
             res.susceptible.at(age_segment_index) = new_s;
         }
 
+        if(simulation_clock > 225){res.disobedient = 0.20;}
         return res;
     }
 
@@ -219,7 +220,9 @@ public:
                                                     state.neighbors_state.at(cell_id).get_total_infections(),
                                                     current_seird.hysteresis_factors.at(cell_id));
 
-        // external exposed
+        // calculate the amount of infective influence all neighbors have on the cell
+        // add each infective influence to totalInfectiveStrength
+        double totalInfectiveStrength = 0;
         for(auto neighbor: neighbors) {
             seird const nstate = state.neighbors_state.at(neighbor);
             vicinity v = state.neighbors_vicinity.at(neighbor);
@@ -233,13 +236,19 @@ public:
             // in place in the current cell if the current cell has a more restrictive movement.
             neighbor_correction = std::min(current_cell_correction_factor, neighbor_correction);
 
-            for (int i = 0; i < nstate.get_num_infected_phases(); ++i) {
-                expos += v.correlation * mobility_rates.at(age_segment_index).at(i) * // variable Cij
-                       virulence_rates.at(age_segment_index).at(i) * // variable lambda
-                       cstate.susceptible.at(age_segment_index) * nstate.get_total_infections() * // variables Si and Ij, respectively
-                       neighbor_correction;  // New exposed may be slightly fewer if there are mobility restrictions
+            for(int b = 0; b < nstate.get_num_age_segments(); b++){
+
+                // sum the weight of infective interactions between the cell's susceptible in age group age_segment_index
+                //                                                                            and infected of age group b
+                double infectiveStrengthAgeGroup = 0;
+                for (int i = 0; i < nstate.get_num_infected_phases(); ++i) {
+                    infectiveStrengthAgeGroup += virulence_rates.at(b).at(i) * mobility_rates.at(b).at(i) * nstate.infected.at(b).at(i);
+                }
+                // scale the infective weight by the percetage that age group makes up the total population of b and neighbor correction factor
+                totalInfectiveStrength += nstate.age_group_proportions.at(b) * infectiveStrengthAgeGroup * neighbor_correction * v.correlation;
             }
         }
+        expos = cstate.susceptible.at(age_segment_index)*totalInfectiveStrength;
         return std::min(cstate.susceptible.at(age_segment_index), expos);
     }
 

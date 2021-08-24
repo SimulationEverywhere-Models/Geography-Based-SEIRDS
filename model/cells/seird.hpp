@@ -18,10 +18,10 @@ struct seird {
     std::vector<double> fatalities;
     std::unordered_map<std::string, hysteresis_factor> hysteresis_factors;
     double population;
-
     double disobedient;
     double hospital_capacity;
     double fatality_modifier;
+    int day;
 
     // Required for the JSON library, as types used with it must be default-constructable.
     // The overloaded constructor results in a default constructor having to be manually written.
@@ -31,7 +31,9 @@ struct seird {
         double fat, double dis, double hcap, double fatm) :
             susceptible{std::move(sus)}, exposed{std::move(exp)}, infected{std::move(inf)},
             recovered{std::move(rec)}, fatalities{fat}, disobedient{dis},
-            hospital_capacity{hcap}, fatality_modifier{fatm} {}
+            hospital_capacity{hcap}, fatality_modifier{fatm} {
+                day = 0;
+            }
 
     unsigned int get_num_age_segments() const {
         return susceptible.size();

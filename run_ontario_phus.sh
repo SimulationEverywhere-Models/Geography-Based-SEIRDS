@@ -1,5 +1,5 @@
 # Written by Glenn
-# This script assumes the model is compiled and the environment running this script includes python and python geopandas
+# This script assumes that cmake has been run, and that the terminal environment includes java, python and python geopandas
 
 # defining commands used
 SIMULATE="./pandemic-geographical_model ../config/scenario_ontario_phu.json 500"
@@ -17,7 +17,7 @@ mkdir -p ${VISUALIZATION_DIR}
 # generate a scenario json file for model input, save it in the config folder
 echo "Generating Scenario:"
 cd Scripts/Input_Generator
-python generate_ontario_phu_json.py
+python generate_ontario_phu_json2.py
 cp output/scenario_ontario_phu.json ../../config
 
 # run the model
@@ -62,3 +62,15 @@ echo "Copying converted files to: ${VISUALIZATION_DIR}"
 cd ../..
 cp Scripts/Msg_Log_Parser/output/messages.log ${VISUALIZATION_DIR}
 cp Scripts/Msg_Log_Parser/output/structure.json ${VISUALIZATION_DIR}
+
+# Copy stats folders to from logs/stats/ case_data_comparison/provinces/sim_timeseries
+echo
+echo "Generating comparison to PHU case data"
+rm -rf Scripts/Compare_Sim_Cases/sim_timeseries
+cp -r logs/stats Scripts/Compare_Sim_Cases/sim_timeseries
+cd Scripts/Compare_Sim_Cases
+python compare_phus.py
+cd ../..
+rm -rf logs/output
+rm -rf logs/case_data_comparison
+mv Scripts/Compare_Sim_Cases/output logs/case_data_comparison

@@ -4,11 +4,9 @@
 # coding: utf-8
 
 # In[1]:
-
-
+    
 import os
 import re
-
 
 # In[2]:
 
@@ -79,14 +77,13 @@ def state_to_cumulative_df(sim_time, region_state, line_num):
     total_new_R = round(cell_population*percent_new_R)
     
     psum = percent_S + percent_E + percent_I + percent_R + percent_D
-    ptotal = total_S + total_E + total_I + total_R + total_D
+    # ptotal = total_S + total_E + total_I + total_R + total_D
     assert 0.95 <= psum < 1.05, ("at time" + str(curr_time))
     
     # return the info in desired format
     return [int(sim_time), total_S, total_E, total_I, total_R, total_new_E, total_new_I, total_new_R, total_D]
 
 # In[5]:
-
 
 states = ["sus", "expos", "infec", "rec"]
 curr_time = None
@@ -189,9 +186,7 @@ with open(log_filename, "r") as log_file:
 # In[7]:
 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
 import matplotlib
 import shutil
 
@@ -243,14 +238,14 @@ for region_key in data_percents:
     # write the timeseries percent file inside stats/region_id
     with open(percentages_filepath, "w") as out_file:
         #out_file.write("initial cell population : " + str(cell_population) + ",\n")
-        out_file.write("sim_time, S, E, I, R, New_E, New_I, New_R, D\n")
+        out_file.write("sim_time,S,E,I,R,New_E,New_I,New_R,D\n")
         for timestep in region_data:
             out_file.write(str(timestep).strip("[]")+"\n")
     
     # write the timeseries cumulative file inside stats/region_id
     with open(totals_filepath, "w") as out_file:
         #out_file.write("initial cell population : " + str(cell_population) + ",\n")
-        out_file.write("sim_time, S, E, I, R, New_E, New_I, New_R, D\n")
+        out_file.write("sim_time,S,E,I,R,New_E,New_I,New_R,D\n")
         for timestep in region_totals:
             out_file.write(str(timestep).strip("[]")+"\n")
     
@@ -273,6 +268,19 @@ for region_key in data_percents:
     plt.xlabel("Time (days)")
     plt.ylabel("Population (%)")
     plt.savefig(base_name + "percentages_SEIR.png")
+    plt.close(fig)
+    
+    # draw infected lines
+    fig, ax = plt.subplots(figsize=(15,6))
+    linewidth = 2
+
+    x = list(df_vis_p.index)
+    ax.plot(x, 100*df_vis_p["infected"], label="Infected", color=COLOR_INFECTED, linewidth=linewidth)
+    plt.legend(loc='upper right')
+    plt.title('Infected Percentages ' + foldername)
+    plt.xlabel("Time (days)")
+    plt.ylabel("Population (%)")
+    plt.savefig(base_name + "percentages_I.png")
     plt.close(fig)
     
     # draw SEIRD lines
@@ -342,4 +350,3 @@ for region_key in data_percents:
     
     plt.savefig(base_name + "totals_SEIR+D.png")
     plt.close(fig)
-    

@@ -200,7 +200,7 @@ base_name = path + "/"
 
 # In[6]:
 with open(base_name+"aggregate_timeseries.csv", "w") as out_file:
-    out_file.write("sim_time, S, E, I, R, New_E, New_I, New_R, D, pop_sum\n")
+    out_file.write("sim_time,S,E,I,R,New_E,New_I,New_R,D,pop_sum\n")
     for timestep in data:
         out_file.write(str(timestep).strip("[]")+"\n")
     
